@@ -1,8 +1,5 @@
-
-import os
-
 from rotation_flipping import mirroring_hori,mirroring_vert,rotate_180
-from transform_image import effect,negative,gris
+from transform_image import effect,negative,grayscale
 from image_library import load_image,save_image,show_image
 
 namefile = 'Lenna.png'

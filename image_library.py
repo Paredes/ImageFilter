@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 from matplotlib import pyplot
+import os
 
 #Funciones para cargar, mostrar o guardar imagen
 def load_image(namefile):
