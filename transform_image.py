@@ -14,10 +14,11 @@ def gris(data):
  
 def negative(data):
     matrix = data.copy()
+    neg = lambda color: 255 - color
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             red, green, blue = matrix[i][j] 
-            matrix[i][j] = [255 - red, 255 - green , 255 - blue]
+            matrix[i][j] = [neg(red), neg(green), neg(blue)]
     return matrix
 
 def effect(data):
