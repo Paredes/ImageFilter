@@ -24,3 +24,7 @@ def rotate_90(data):
 def rotate_180(data):
     matrix = data.copy()
     return mirroring_hori(mirroring_vert(matrix))
+
+def rotate_270(data):
+    matrix = data.copy()
+    return rotate_180(rotate_90(matrix))
