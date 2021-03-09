@@ -1,17 +1,28 @@
 # Funciones para aplicar filtros a la imagen
-def gris(data):
-    matrix = data.copy()
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            acum = 0
-            for elem in matrix[i][j]:
-                acum += elem
-            prom = acum / 3
-            matrix[i][j][0] = prom
-            matrix[i][j][1] = prom
-            matrix[i][j][2] = prom
-    return matrix
- 
+def grayscale(data, basic=False):
+    def grayscale_1(data):
+        matrix = data.copy()
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                red, green, blue = matrix[i][j]
+                prom = (red + green + blue)/3
+                matrix[i][j] = [prom, prom, prom]
+        return matrix
+
+    # Usando la recomendacion BT.601-7
+    def grayscale_2(data):
+        matrix = data.copy()
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                red, green, blue = matrix[i][j]
+                gray = (red * 0.299) + (green * 0.587) + (blue * 0.114)
+                matrix[i][j] = [int(gray), int(gray), int(gray)]
+        return matrix
+    if basic:
+        return grayscale_1(data)
+    else:
+        return grayscale_2(data)
+        
 def negative(data):
     matrix = data.copy()
     neg = lambda color: 255 - color
